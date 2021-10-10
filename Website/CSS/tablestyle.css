@@ -1,0 +1,15 @@
+form  {
+  display: table;
+}
+p     {
+  display: table-row;
+
+}
+label {
+  display: table-cell;
+  padding-right: 36px;
+}
+input {
+  display: table-cell;
+  text-align: right;
+}

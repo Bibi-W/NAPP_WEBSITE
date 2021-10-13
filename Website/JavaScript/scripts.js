@@ -63,6 +63,14 @@ var calories = 0;
 var positive_values = true;
 var null_values = true;
 
+/*
+  This function will take the user's data from input, and set
+  them to their proper variables.
+  This also checks whether any inputs has an invalid input, such as
+  a negative number or a non-number input. It also checks if there are
+  any null values within the form. Actions will be taken according to
+  what is within the form.
+*/
 function send_data() {
 
   let elements = document.getElementsByTagName("input");
@@ -128,7 +136,13 @@ function send_data() {
   }
 }
 
+/*
+  This function takes the calories from the previous function, and
+  based on Jeff Novick's guidelines will perform different calculations.
 
+  The results of these calculations are stored within their own variables.
+  When finished, the display_results() function will be executed.
+*/
 function calc_data() {
   cal_density = Math.round((calories / user_grams) * GRAMS_IN_POUND);
   ideal_total_fat = calories * IDEAL_SAT_FAT_MOD;
@@ -143,6 +157,14 @@ function calc_data() {
 
   display_results();
 }
+
+/*
+  The biggest function out of all of them, the display_results()
+  function displays each variables within their respected cell on the
+  result table.
+
+  At the end of most rows we execute the compare_data() function.
+*/
 
 function display_results() {
   document.getElementById("B2").innerHTML= user_grams;
@@ -182,6 +204,11 @@ function display_results() {
 
 }
 
+/*
+  This function compares the user's value to both the calculated best value
+  and the acceptable value, and displays a String result based on
+  the comparison.
+*/
 function compare_data(user, best, acceptable) {
   if(user <= best) {
     return "Ideal";
@@ -194,6 +221,11 @@ function compare_data(user, best, acceptable) {
   }
 }
 
+/*
+  The clear_data() function runs through each input elements within
+  the form, and clears the data. This is useful if you want to check
+  a new food item.
+*/
 function clear_data() {
   var elements = document.getElementsByTagName("input");
   for(var i = 0; i < elements.length; i++) {

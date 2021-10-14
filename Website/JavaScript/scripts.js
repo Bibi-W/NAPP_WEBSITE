@@ -61,7 +61,7 @@ var calories = 0;
   refill the form.
 */
 var positive_values = true;
-var null_values = true;
+var null_values = false;
 
 /*
   This function will take the user's data from input, and set
@@ -76,7 +76,6 @@ function send_data() {
   let elements = document.getElementsByTagName("input");
   for (let i = 0; i < elements.length; i++) {
     if(elements[i].value >= 0 && elements[i].value != '') {
-      null_values = false;
       console.log(elements[i].value);
 
       switch (elements[i].name) {
@@ -119,7 +118,6 @@ function send_data() {
       }
     }
     else if (elements[i].value != ''){
-      null_values = false;
       positive_values = false;
       alert("Invalid input in the " + elements[i].name + " field. Try again!")
     }
@@ -145,15 +143,16 @@ function send_data() {
 */
 function calc_data() {
   cal_density = Math.round((calories / user_grams) * GRAMS_IN_POUND);
-  ideal_total_fat = calories * IDEAL_SAT_FAT_MOD;
-  total_fat = calories * MAX_TOTAL_FAT_MOD;
-  ideal_sat_fat = calories * IDEAL_SAT_FAT_MOD;
-  sat_fat = calories * MAX_SAT_FAT_MOD;
-  ideal_sodium = calories * MAX_SODIUM_MOD;
-  ideal_fiber = calories * IDEAL_FIBER_MOD;
-  fiber = calories * MIN_FIBER_MOD;
-  ideal_sugar = calories * IDEAL_SUGAR_MOD;
-  sugar = calories * MAX_SUGAR_MOD;
+  ideal_total_fat = parseFloat(calories * IDEAL_SAT_FAT_MOD).toPrecision(2);
+  total_fat = parseFloat(calories * MAX_TOTAL_FAT_MOD).toPrecision(2);
+  ideal_sat_fat = parseFloat(calories * IDEAL_SAT_FAT_MOD).toPrecision(2);
+  sat_fat = parseFloat(calories * MAX_SAT_FAT_MOD).toPrecision(2);
+  ideal_sodium = calories;
+  sodium = (calories * MAX_SODIUM_MOD);
+  ideal_fiber = parseFloat(calories * IDEAL_FIBER_MOD).toPrecision(2);
+  fiber = parseFloat(calories * MIN_FIBER_MOD).toPrecision(2);
+  ideal_sugar = parseFloat(calories * IDEAL_SUGAR_MOD).toPrecision(2);
+  sugar = parseFloat(calories * MAX_SUGAR_MOD).toPrecision(2);
 
   display_results();
 }
@@ -170,16 +169,16 @@ function display_results() {
   document.getElementById("B2").innerHTML= user_grams;
   document.getElementById("B3").innerHTML = calories;
   document.getElementById("B4").innerHTML = cal_density;
-  document.getElementById("C4").innerHTML = IDEAL_CAL_DENSITY;
-  document.getElementById("D4").innerHTML = MAX_CAL_DENSITY;
+  document.getElementById("C4").innerHTML = "≤ " + IDEAL_CAL_DENSITY;
+  document.getElementById("D4").innerHTML = "≤ " + IDEAL_CAL_DENSITY + " - " + MAX_CAL_DENSITY;
   document.getElementById("E4").innerHTML = compare_data(cal_density, IDEAL_CAL_DENSITY, MAX_CAL_DENSITY);
   document.getElementById("B5").innerHTML = user_total_fat;
-  document.getElementById("C5").innerHTML = ideal_total_fat;
-  document.getElementById("D5").innerHTML = total_fat;
+  document.getElementById("C5").innerHTML = "≤ " + ideal_total_fat;
+  document.getElementById("D5").innerHTML = "≤ " + total_fat;
   document.getElementById("E5").innerHTML = compare_data(user_total_fat, ideal_total_fat, total_fat);
   document.getElementById("B6").innerHTML = user_saturated_fat;
-  document.getElementById("C6").innerHTML = ideal_sat_fat;
-  document.getElementById("D6").innerHTML = sat_fat;
+  document.getElementById("C6").innerHTML = "≤ " + ideal_sat_fat;
+  document.getElementById("D6").innerHTML = "≤ " + sat_fat;
   document.getElementById("E6").innerHTML = compare_data(user_saturated_fat, ideal_sat_fat, sat_fat);
   document.getElementById("B7").innerHTML = user_trans_fat;
   document.getElementById("C7").innerHTML = IDEAL_TRANS_FAT;
@@ -187,19 +186,19 @@ function display_results() {
   document.getElementById("E7").innerHTML = compare_data(user_trans_fat, IDEAL_TRANS_FAT, MAX_TRANS_FAT);
   document.getElementById("B8").innerHTML = user_cholesterol;
   document.getElementById("C8").innerHTML = IDEAL_CHOLESTORAL;
-  document.getElementById("D8").innerHTML = MAX_CHOLESTORAL;
+  document.getElementById("D8").innerHTML = "≤ " + MAX_CHOLESTORAL;
   document.getElementById("E8").innerHTML = compare_data(user_cholesterol, IDEAL_CHOLESTORAL, MAX_CHOLESTORAL);
   document.getElementById("B9").innerHTML = user_sodium;
-  document.getElementById("C9").innerHTML = ideal_sodium;
-  document.getElementById("D9").innerHTML = sodium;
+  document.getElementById("C9").innerHTML = "≤ " + ideal_sodium;
+  document.getElementById("D9").innerHTML = "≤ " + sodium;
   document.getElementById("E9").innerHTML = compare_data(user_sodium, ideal_sodium, sodium);
   document.getElementById("B10").innerHTML = user_fiber;
-  document.getElementById("C10").innerHTML = ideal_fiber;
-  document.getElementById("D10").innerHTML = fiber;
-  document.getElementById("E10").innerHTML = compare_data(user_fiber, ideal_fiber, fiber);
+  document.getElementById("C10").innerHTML = "≥ " + ideal_fiber;
+  document.getElementById("D10").innerHTML = "≥ " + fiber;
+  document.getElementById("E10").innerHTML = compare_reverse(user_fiber, ideal_fiber, fiber);
   document.getElementById("B11").innerHTML = user_sugar;
-  document.getElementById("C11").innerHTML = ideal_sugar;
-  document.getElementById("D11").innerHTML = sugar;
+  document.getElementById("C11").innerHTML = "≤ " + ideal_sugar;
+  document.getElementById("D11").innerHTML = "≤ " + sugar;
   document.getElementById("E11").innerHTML = compare_data(user_sugar, ideal_sugar, sugar);
 
 }
@@ -210,15 +209,28 @@ function display_results() {
   the comparison.
 */
 function compare_data(user, best, acceptable) {
-  if(user <= best) {
+    if(user - best <= 0) {
+      return "Ideal";
+    }
+    else if (user - best > 0 && user - acceptable <= 0) {
+      return "Acceptable";
+    }
+    else {
+      return "Not Acceptable";
+    }
+}
+
+function compare_reverse(user, best, acceptable) {
+  if(user >= best) {
     return "Ideal";
   }
-  else if (user > best && user <= acceptable) {
+  else if (user < best && user >= acceptable) {
     return "Acceptable";
   }
   else {
     return "Not Acceptable";
   }
+
 }
 
 /*

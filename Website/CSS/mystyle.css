@@ -1,8 +1,14 @@
+@import url("nav_style.css");
+@import url("homestyle.css");
+
 html {
   min-height: 100%;
 }
 body {
   background: linear-gradient(0deg, rgba(255, 255, 255, 1) 40%, rgba(141, 198, 63, 1) 100%);
+  margin: inherit;
+  background-repeat: no-repeat;
+  padding-top: 5%;
 }
 h1 {
   text-align: left;
@@ -13,6 +19,11 @@ h2 {
   text-align: left;
   font-size: 36px;
   color: #7A318F;
+}
+h3 {
+  font-size: 24px;
+  color: #7A318F;
+  font-style: italic;
 }
 fieldset {
   height: 450px;
@@ -33,6 +44,26 @@ div.float_right {
   height: 500px;
   width: 50%;
   max-width: 1000px;
+}
+div.center_container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  vertical-align: middle;
+  max-width: 600px;
+  max-height: inherit;
+  border: 2px solid black;
+  border-radius: 3px;
+
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  max-width: 450px;
+  max-height: inherit;
 }
 legend {
   font-size: 20px

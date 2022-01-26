@@ -52,7 +52,7 @@ div.center_container {
   padding: 20px;
   vertical-align: middle;
   max-width: 600px;
-  max-height: inherit;
+  max-height: 400px;
   border: 2px solid black;
   border-radius: 3px;
 

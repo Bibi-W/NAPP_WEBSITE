@@ -36,13 +36,11 @@
     <hr><br>
 
     <div class = "float_left">
-      <form id = "dataForm">
-        <fieldset>
-          <legend>Manual Data Entry:</legend>
+      <fieldset>
+        <form id = "dataForm">
+          <h3 style="font-style: normal;">Manual Data Entry</h3>
           <p>Please fill out the form below:</p>
-
           <table>
-            <tr>
               <th></th>
               <th></th>
               <th>Units</th>
@@ -106,25 +104,25 @@
           </table>
 
           <br><br>
+          
           <div class="button_holder">
             <button type="button" name="button" class = "floated" onclick="send_data()">Submit Data</button>
             <button type="button" name="clear" class = "floated" onclick="clear_data()">Clear Data</button>
           </div>
-        </fieldset>
-      </form>
-
+        </form>
+      </fieldset>
     </div>
 
     <div class="float_right">
       <fieldset>
-        <legend>Results:</legend>
+        <h3 style="font-style: normal;">Results:</h3>
         <p>Here are the results based on your input.</p>
         <table class = "result_table">
           <tr>
             <th></th>
             <th>Your Input</th>
             <th>Ideal Amount</th>
-            <th>Acceptable Amount</th>
+            <th>Recommended Amount</th>
             <th>Result</th>
           </tr>
           <tr>

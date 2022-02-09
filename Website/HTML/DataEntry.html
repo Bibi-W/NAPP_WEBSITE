@@ -173,9 +173,92 @@
         </fieldset>
       </div>
 
+    <div class = "float_left">
+      <fieldset>
+        <form id = "dataForm">
+          <h3 style="font-style: normal;">Manual Data Entry</h3>
+          <p>Please fill out the form below:</p>
+          <table>
+              <th></th>
+              <th></th>
+              <th>Units</th>
+            </tr>
+            <tr>
+              <td>Calories per serving:</td>
+              <td>
+                <input type="text"name = "Calories" id="cal_in" value="">
+              </td>
+              <td>cal</td>
+            </tr>
+            <tr>
+              <td>Total Fat:</td>
+              <td>
+                <input type="text" name = "Total Fat" id="fat_in" value="">
+              </td>
+              <td>g</td>
+            </tr>
+            <tr>
+              <td>Saturated Fat:</td>
+              <td>
+                <input type="text" name = "Saturated Fat" id="sFat_in" value="">
+              </td>
+              <td>g</td>
+            </tr>
+            <tr>
+              <td>Trans Fat:</td>
+              <td>
+                <input type="text" name = "Trans Fat" id="trFat_in" value="">
+              </td>
+              <td>g</td>
+            </tr>
+            <tr>
+              <td>Cholesterol:</td>
+              <td>
+                <input type="text" name = "Cholesterol" id="chol_in" value="">
+              </td>
+              <td>mg</td>
+            </tr>
+            <tr>
+              <td>Sodium:</td>
+              <td>
+                <input type="text" name = "Sodium" id="sodium_in" value="">
+              </td>
+              <td>mg</td>
+            </tr>
+            <tr>
+              <td>Dietary Fiber:</td>
+              <td>
+                <input type="text" name = "Dietary Fiber"id="fiber_in" value="">
+              </td>
+              <td>g</td>
+            </tr>
+            <tr>
+              <td>Added Sugar:</td>
+              <td>
+                <input type="text" name = "Added Sugar" id="sugar_in" value="">
+              </td>
+              <td>g</td>
+            </tr>
+          </table>
+
+          <br><br>
+          
+          <div class="button_holder">
+            <button type="button" name="button" class = "floated" onclick="send_data()">Submit Data</button>
+            <button type="button" name="clear" class = "floated" onclick="clear_data()">Clear Data</button>
+          </div>
+        </form>
+      </fieldset>
+    </div>
+
+
       <div class="col border">
       <fieldset>
-        <h2> style="font-style: normal;">Results:</h2>
+
+        <h2 style="font-style: normal;">Results:</h2>
+
+        <h3 style="font-style: normal;">Results:</h3>
+
         <p>Here are the results based on your input.</p>
         <table class = "result_table">
           <tr>

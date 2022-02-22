@@ -2,15 +2,15 @@
 These constants are used for both calculation and/or comparison
 of the ideal/acceptable amounts of each nutrition facts.
 */
-const GRAMS_IN_POUND = 453.592;
-const IDEAL_CAL_DENSITY = 600;
+
+
 const IDEAL_TOTAL_FAT_MOD = 0.015;
 const IDEAL_SAT_FAT_MOD = 0.005;
 const IDEAL_TRANS_FAT = 0;
 const IDEAL_CHOLESTORAL = 0;
 const IDEAL_FIBER_MOD = 0.03;
 const IDEAL_SUGAR_MOD = 0.005;
-const MAX_CAL_DENSITY = 800;
+
 const MAX_TOTAL_FAT_MOD = 0.02;
 const MAX_SAT_FAT_MOD = 0.007;
 const MAX_TRANS_FAT = 0;
@@ -22,7 +22,7 @@ const MIN_FIBER_MOD = 0.02;
 /*
 These variables will be the placeholders for calculated data
 */
-var cal_density = 0;
+
 var ideal_total_fat = 0;
 var total_fat = 0;
 var ideal_sat_fat = 0;
@@ -37,7 +37,7 @@ var sugar = 0;
 /*
   These variables store the user's inputs.
 */
-var user_grams = 0;
+
 var user_total_fat = 0;
 var user_saturated_fat = 0;
 var user_trans_fat = 0;
@@ -75,62 +75,52 @@ function send_data() {
 
   let elements = document.getElementsByTagName("input");
   for (let i = 0; i < elements.length; i++) {
-    if(elements[i].value >= 0 && elements[i].value != '') {
-      console.log(elements[i].value);
 
-      switch (elements[i].name) {
-        case "Grams":
-          user_grams = elements[i].value;
-          console.log("Grams per serving: " + user_grams);
-          break;
-        case "Calories":
-          calories = elements[i].value;
-          console.log("Calories per serving: " + calories);
-          break;
-        case "Total Fat":
-          user_total_fat = elements[i].value;
-          console.log("Total Fat per serving: " + user_total_fat);
-          break;
-        case "Saturated Fat":
-          user_saturated_fat = elements[i].value;
-          console.log("Saturated Fat per serving: " + user_saturated_fat);
-          break;
-        case "Trans Fat":
-          user_trans_fat = elements[i].value;
-          console.log("Trans Fat per serving: " + user_trans_fat);
-          break;
-        case "Cholesterol":
-          user_cholesterol = elements[i].value;
-          console.log("Cholesterol per serving: " + user_cholesterol);
-          break;
-        case "Sodium":
-          user_sodium = elements[i].value;
-          console.log("Sodium per serving: " + user_sodium);
-          break;
-        case "Dietary Fiber":
-          user_fiber = elements[i].value;
-          console.log("Dietary Fiber per serving: " + user_fiber);
-          break;
-        case "Added Sugar":
-          user_sugar = elements[i].value;
-          console.log("Added Sugar per serving: " + user_sugar);
-          break;
-      }
-    }
-    else if (elements[i].value != ''){
-      positive_values = false;
-      alert("Invalid input in the " + elements[i].name + " field. Try again!")
-    }
-    else {
-      null_values = true;
-      positive_values = false;
-    }
-  }
-  if(positive_values == true) {
-    calc_data();
-  }
-  else if (null_values == true) {
-    alert("Form is incomplete. Please fill out form and try again!");
+if(elements[i].value == '') {
+  alert("Form is incomplete. Please fill out form and try again!");
+  break;
+}
+else if (elements[i].value < 0) {
+  alert("Invalid input in the " + elements[i].name + " field. Try again!")
+  break;
+}
+else {
+  console.log(elements[i].value);
+
+  switch (elements[i].name) {
+    case "Calories":
+      calories = elements[i].value;
+      console.log("Calories per serving: " + calories);
+      break;
+    case "Total Fat":
+      user_total_fat = elements[i].value;
+      console.log("Total Fat per serving: " + user_total_fat);
+      break;
+    case "Saturated Fat":
+      user_saturated_fat = elements[i].value;
+      console.log("Saturated Fat per serving: " + user_saturated_fat);
+      break;
+    case "Trans Fat":
+      user_trans_fat = elements[i].value;
+      console.log("Trans Fat per serving: " + user_trans_fat);
+      break;
+    case "Cholesterol":
+      user_cholesterol = elements[i].value;
+      console.log("Cholesterol per serving: " + user_cholesterol);
+      break;
+    case "Sodium":
+      user_sodium = elements[i].value;
+      console.log("Sodium per serving: " + user_sodium);
+      break;
+    case "Dietary Fiber":
+      user_fiber = elements[i].value;
+      console.log("Dietary Fiber per serving: " + user_fiber);
+      break;
+    case "Added Sugar":
+      user_sugar = elements[i].value;
+      console.log("Added Sugar per serving: " + user_sugar);
+      calc_data();
+      break;
   }
 }
 
@@ -142,7 +132,6 @@ function send_data() {
   When finished, the display_results() function will be executed.
 */
 function calc_data() {
-  cal_density = Math.round((calories / user_grams) * GRAMS_IN_POUND);
   ideal_total_fat = parseFloat(calories * IDEAL_SAT_FAT_MOD).toPrecision(2);
   total_fat = parseFloat(calories * MAX_TOTAL_FAT_MOD).toPrecision(2);
   ideal_sat_fat = parseFloat(calories * IDEAL_SAT_FAT_MOD).toPrecision(2);
@@ -166,12 +155,7 @@ function calc_data() {
 */
 
 function display_results() {
-  document.getElementById("B2").innerHTML= user_grams;
   document.getElementById("B3").innerHTML = calories;
-  document.getElementById("B4").innerHTML = cal_density;
-  document.getElementById("C4").innerHTML = "≤ " + IDEAL_CAL_DENSITY;
-  document.getElementById("D4").innerHTML = "≤ " + IDEAL_CAL_DENSITY + " - " + MAX_CAL_DENSITY;
-  document.getElementById("E4").innerHTML = compare_data(cal_density, IDEAL_CAL_DENSITY, MAX_CAL_DENSITY);
   document.getElementById("B5").innerHTML = user_total_fat;
   document.getElementById("C5").innerHTML = "≤ " + ideal_total_fat;
   document.getElementById("D5").innerHTML = "≤ " + total_fat;

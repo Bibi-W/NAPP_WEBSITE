@@ -1,48 +1,185 @@
+
+<!-- TODO
+
+- Add active style to the dropdown list and items.
+-->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device_width, initial_scale=1">
+
+    
     <title>
       Data Entry - NewtriFacts
     </title>
-    <link rel="stylesheet" href="../CSS/mystyle.css"></link>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/main_style.css"></link>
+<!--    <link rel="stylesheet" href="../CSS/mystyle.css"></link>
+-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="../JavaScript/scripts.js"></script>
+    <script src="../JavaScript/search.js"></script>
+
+
   </head>
   <body>
-
     <section>
       <header>
-        <nav>
-          <ul class="topnav">
-            <li><a href="home.html" class="home_link"><strong>NewtriFacts</strong></a></li>
-            <li><a href="about_us.html">About Us</a></li>
-            <li><a href="Cheatsheet.html">Cheatsheet</a></li>
-            <li><a href="DataEntry.html">Data Entry</a></li>
-            <li><a href="search.html">Search</a></li>
-            <li><a href="help.html">Help</a><li>
-          </ul>
+        <nav class="navbar-nav navbar-expand-sm navbar-light bg-light py-3">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-1">
+                <a class="navbar-brand" href="home.html">Newtrifacts</a>
+              </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              <div class="col-5">
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item-dropdown">
+                        <div class="dropdown-container" style="position: relative;">
+                          <a class="nav-link dropdown-toggle" href="#" id="checkNutritionFactsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Check Nutrition Facts
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="Cheatsheet.html">
+                              Cheatsheet
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="DataEntry.html">
+                              Data Entry
+                            </a></li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="search.html">Scan Barcode</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="about_us.html">About Us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="help.html">Help</a>
+                      </li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="col-5">
+                <form class="row">
+                <div class="col-5">
+                  <input class="form-control me-2" type="text" placholder="Food search" aria-label="Food search">
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </nav>
-        <h2>Data Entry</h2>
+
+
+        <h1>Data Entry</h1>
 
         <p>
           Want to see your favorite food from a new perspective? You have come to the right place.
           <br>Using the nutrition label on the food package, type in the data needed; when finished, click "Submit Data".
           <br>Want to know the math behind what we do? Click the "Cheat Sheet" link in the navigation bar above!
         </p>
-        <br>
       </header>
-
     </section>
-    <hr><br>
+    <br>
+
+    <div class="container-fluid align-items-start bg-light">
+      <div class="row">
+      <div class="col border">
+        <fieldset>
+          <form id = "dataForm">
+            <h2 style="font-style: normal;">Manual Data Entry</h2>
+            <p>Please fill out the form below:</p>
+            <table>
+                <th></th>
+                <th></th>
+                <th>Units</th>
+              </tr>
+              <tr>
+                <td>Calories per serving:</td>
+                <td>
+                  <input type="text"name = "Calories" id="cal_in" value="">
+                </td>
+                <td>cal</td>
+              </tr>
+              <tr>
+                <td>Total Fat:</td>
+                <td>
+                  <input type="text" name = "Total Fat" id="fat_in" value="">
+                </td>
+                <td>g</td>
+              </tr>
+              <tr>
+                <td>Saturated Fat:</td>
+                <td>
+                  <input type="text" name = "Saturated Fat" id="sFat_in" value="">
+                </td>
+                <td>g</td>
+              </tr>
+              <tr>
+                <td>Trans Fat:</td>
+                <td>
+                  <input type="text" name = "Trans Fat" id="trFat_in" value="">
+                </td>
+                <td>g</td>
+              </tr>
+              <tr>
+                <td>Cholesterol:</td>
+                <td>
+                  <input type="text" name = "Cholesterol" id="chol_in" value="">
+                </td>
+                <td>mg</td>
+              </tr>
+              <tr>
+                <td>Sodium:</td>
+                <td>
+                  <input type="text" name = "Sodium" id="sodium_in" value="">
+                </td>
+                <td>mg</td>
+              </tr>
+              <tr>
+                <td>Dietary Fiber:</td>
+                <td>
+                  <input type="text" name = "Dietary Fiber"id="fiber_in" value="">
+                </td>
+                <td>g</td>
+              </tr>
+              <tr>
+                <td>Added Sugar:</td>
+                <td>
+                  <input type="text" name = "Added Sugar" id="sugar_in" value="">
+                </td>
+                <td>g</td>
+              </tr>
+            </table>
+
+            <br><br>
+            
+            <div class="button_holder">
+              <button type="button" name="button" class = "floated" onclick="send_data()">Submit Data</button>
+              <button type="button" name="clear" class = "floated" onclick="clear_data()">Clear Data</button>
+            </div>
+          </form>
+        </fieldset>
+      </div>
 
     <div class = "float_left">
-      <form id = "dataForm">
-        <fieldset>
-          <legend>Manual Data Entry:</legend>
+      <fieldset>
+        <form id = "dataForm">
+          <h3 style="font-style: normal;">Manual Data Entry</h3>
           <p>Please fill out the form below:</p>
-
           <table>
-            <tr>
               <th></th>
               <th></th>
               <th>Units</th>
@@ -106,25 +243,30 @@
           </table>
 
           <br><br>
+          
           <div class="button_holder">
             <button type="button" name="button" class = "floated" onclick="send_data()">Submit Data</button>
             <button type="button" name="clear" class = "floated" onclick="clear_data()">Clear Data</button>
           </div>
-        </fieldset>
-      </form>
-
+        </form>
+      </fieldset>
     </div>
 
-    <div class="float_right">
+
+      <div class="col border">
       <fieldset>
-        <legend>Results:</legend>
+
+        <h2 style="font-style: normal;">Results:</h2>
+
+        <h3 style="font-style: normal;">Results:</h3>
+
         <p>Here are the results based on your input.</p>
         <table class = "result_table">
           <tr>
             <th></th>
             <th>Your Input</th>
             <th>Ideal Amount</th>
-            <th>Acceptable Amount</th>
+            <th>Recommended Amount</th>
             <th>Result</th>
           </tr>
           <tr>
@@ -185,6 +327,8 @@
           </tr>
         </table>
       </fieldset>
+      </div>
+      </div>
     </div>
 
 

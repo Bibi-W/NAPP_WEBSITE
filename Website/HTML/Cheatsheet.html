@@ -44,14 +44,14 @@
       <hr>
 
       <div>
-        <form id = "cheatForm" onsubmit="return false">
+        <form name = "cheatsheetForm" onsubmit="return false;">
           <fieldset>
             <legend>Cheatsheet</legend>
             <label for="input">Enter a positive Calories amount:</label><br>
             <input type="text" name = "input" id = "in">
             <br>
             <br>
-            <button type="button" onclick="do_calc()" id = "btn">Submit</button>
+            <button type="button" onclick="do_calc()" id="btn">Submit</button> <!--This will submit the data to the linked JavaScript file. -->
             <br>
             <br>
             <!--
@@ -96,17 +96,16 @@
           </fieldset>
         </form>
       </div>
-
       <script type="text/javascript">
-      document.getElementById("in").addEventListener("keyup", function(event) {
-        if(event.keyCode == 13) {
-          event.preventDefault();
-          document.getElementById("btn").click();
-        }
-      });
+        document.getElementById("in").addEventListener("keyup", function(event) {
+          if(event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("btn").click();
+          }
+        });
       </script>
-      
     </body>
+
     <footer>
       <h4>
         * NOTE: Results are rounded up to nearest Integer

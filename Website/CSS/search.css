@@ -1,0 +1,18 @@
+.card-item  {
+  @extend .rounded;
+  margin:0.5em;
+}
+
+.progress-bar {
+  width: 0%;
+}
+
+.progress-icon  {
+  float: right;
+}
+
+.progress-ideal {
+   position:absolute;
+   width: 0%;
+   z-index:1;
+}

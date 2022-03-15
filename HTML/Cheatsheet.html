@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cheatsheet - NewtriFacts</title>
+    <script type="text/javascript" src = "../JavaScript/Cheatsheet.js"></script>
+    <link rel = "stylesheet" type = "text/css" href="../CSS/mystyle.css">
+  </head>
+  <body>
+    <!--This program will demonstrate what the F21-99-NAPP
+      group has currently learned in the topics of HTML, JavaScript, and little
+      bit of CSS.
+
+      For this page, we will include the form that includes 1 input and 1
+      button. The user will type in a number, then click the submit button.
+
+      When the Submit button is pressed, the JavaScript program will first check
+      if the input is either a negative number or isn't an number. If either
+      conditions doesn't occur, the program will do a simple calculation and print
+      it onto the HTML document.
+      Otherwise an alert will appear and no further actions will be taken.-->
+
+      <section>
+        <header>
+          <nav>
+            <ul class="topnav">
+              <li><a href="home.html" class="home_link"><strong>NewtriFacts</strong></a></li>
+              <li><a href="about_us.html">About Us</a></li>
+              <li><a href="Cheatsheet.html">Cheatsheet</a></li>
+              <li><a href="DataEntry.html">Data Entry</a></li>
+              <li><a href="search.html">Search</a></li>
+              <li><a href="help.html">Help</a><li>
+            </ul>
+          </nav>
+          <h2>Cheatsheet</h2>
+        </header>
+        <p>
+          For a better understanding of the math behind Jeff Novick's guidelines,
+          this page will allow you to enter any positive amount of calories.
+          <br>Click "Submit" once you've entered a valid input, and the page
+          will show the results of each of his recommendations.
+        </p>
+      </section>
+
+      <hr>
+
+      <div>
+        <form name = "cheatsheetForm" onsubmit="return false;">
+          <fieldset>
+            <legend>Cheatsheet</legend>
+            <label for="input">Enter a positive Calories amount:</label><br>
+            <input type="text" name = "input" id = "in">
+            <br>
+            <br>
+            <button type="button" onclick="do_calc()" id="btn">Submit</button> <!--This will submit the data to the linked JavaScript file. -->
+            <br>
+            <br>
+            <!--
+              The following table displays the calculated results of each rule
+              based on the input given by the user. The results are calculated
+              then displayed using the Cheatsheet.js file attached
+            -->
+            <table>
+              <tr>
+                <th></th>
+                <th style = "width: 20%">Results*</th>
+              </tr>
+              <tr>
+                <td>Max amount of Total Fat (2% of Calories):</td>
+                <td id = "res2"></td>
+              </tr>
+              <tr>
+                <td>Max amount of Saturated Fat (0.7% of Calories):</td>
+                <td id = "res3"></td>
+              </tr>
+              <tr>
+                <td>Max amount of Trans Fat (for any food item):</td>
+                <td id = "res4"></td>
+              </tr>
+              <tr>
+                <td>Max amount of Cholesterol (per day):</td>
+                <td id = "res5"></td>
+              </tr>
+              <tr>
+                <td>Max amount of added Sugar (2% of Calories):</td>
+                <td id = "res6"></td>
+              </tr>
+              <tr>
+                <td>Max amount of Sodium (100 mg : 100 cal.):</td>
+                <td id = "res7"></td>
+              </tr>
+              <tr>
+                <td>Minimum amount of Fiber (3% of Calories):</td>
+                <td id = "res8"></td>
+              </tr>
+            </table>
+          </fieldset>
+        </form>
+      </div>
+      <script type="text/javascript">
+        document.getElementById("in").addEventListener("keyup", function(event) {
+          if(event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("btn").click();
+          }
+        });
+      </script>
+    </body>
+
+    <footer>
+      <h4>
+        * NOTE: Results are rounded up to nearest Integer
+        <br>for the sake of simplification.
+      </h4>
+    </footer>
+</html>

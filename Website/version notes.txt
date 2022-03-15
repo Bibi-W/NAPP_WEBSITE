@@ -1,0 +1,16 @@
+
+This is the branch that I (Bianca) am working on; the Cheatsheet and Data Entry are
+outdated.
+
+To find the page with the search result cards, go to "Search" on the main page - this
+is just a temporary measure, it'll need to be integrated as the output for actually
+performing a search. Also, I'm going to move the search bar into its own html file
+now that I know how to import those (this has been attempted in nav.html, but that's
+extremely outdated).
+
+The files for the results page are search.html, search.css, and search.js.
+The template for a blank result card is found in searchcard.html.
+
+Apologies for the mess; it's taking some time to learn how to apply the techniques I
+would use to simplify C++ or Python in these languages. Also, some of the pages may take
+a bit to update (the link to the search results page works though).
